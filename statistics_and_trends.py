@@ -105,7 +105,7 @@ def writing(moments, col):
        skew_text = "highlt left skewed"
     elif skew > 0:
        skew_text = "right skewed"
-     elif skew < 0:
+    elif skew < 0:
        skew_text = "left skewed"
     else:
        skew_text = "not skewed"
