@@ -7,7 +7,6 @@ You should NOT change any function, file or variable names,
 Make use of the functions presented in the lectures
 and ensure your code is PEP-8 compliant, including docstrings.
 """
-from corner import corner
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -21,8 +20,12 @@ def plot_relational_plot(df):
        print("No enough numerical columns for relational plot")
        return
     fig, ax = plt.subplots(figsize=(8, 5))
-    sns.scatterplot(x=numeric_cols[0], y=numeric_cols[1], data=df, color='seagreen', ax=ax)
-    ax.set_title(f"Relationship between {numeric_cols[0]} and {numeric_cols[1]}")
+    sns.scatterplot(
+        x=numeric_cols[0], y=numeric_cols[1], data=df, color='seagreen', ax=ax
+    )
+    ax.set_title(
+        f"Relationship between {numeric_cols[0]} and {numeric_cols[1]}"
+    )
     ax.set_xlabel(numeric_cols[0])
     ax.set_ylabel(numeric_cols[1])
     fig.tight_layout()
@@ -68,6 +71,7 @@ def plot_statistical_plot(df):
     print("Correlation heatmap saved as 'statistical_plot_heatmap.png'.")
     return
 
+
 def statistical_analysis(df, col: str):
     mean = df[col].mean()
     stddev = df[col].std()
@@ -82,9 +86,9 @@ def preprocessing(df):
     missing = df.isnull().sum()
     print(missing)
     if missing.any():
-       df = df.dropna()
+        df = df.dropna()
     else:
-       print("\n No missing values found")
+        print("\n No missing values found")
     print(df.corr(numeric_only=True))
      
     return df
@@ -100,22 +104,22 @@ def writing(moments, col):
     skew = moments[2]
     kurt = moments[3]
     if skew >2:
-       skew_text = "highlt right skewed"
+        skew_text = "highlt right skewed"
     elif skew < -2:
-       skew_text = "highlt left skewed"
+        skew_text = "highlt left skewed"
     elif skew > 0:
-       skew_text = "right skewed"
+        skew_text = "right skewed"
     elif skew < 0:
-       skew_text = "left skewed"
+        skew_text = "left skewed"
     else:
-       skew_text = "not skewed"
+        skew_text = "not skewed"
 
     if kurt > 0:
-       kurt_text = 'leptokurtic'
+        kurt_text = 'leptokurtic'
     elif kurt < 0:
-       kurt_text = 'platykurtic'
+        kurt_text = 'platykurtic'
     else:
-       kurt_text = 'mesokurtic'
+        kurt_text = 'mesokurtic'
 
     print(f'The data was {skew_text} and {kurt_text}.')
     return
