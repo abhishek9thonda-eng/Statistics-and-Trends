@@ -17,8 +17,8 @@ import seaborn as sns
 def plot_relational_plot(df):
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     if len(numeric_cols) < 2:
-       print("No enough numerical columns for relational plot")
-       return
+        print("No enough numerical columns for relational plot")
+        return
     fig, ax = plt.subplots(figsize=(8, 5))
     sns.scatterplot(
         x=numeric_cols[0], y=numeric_cols[1], data=df, color='seagreen', ax=ax
@@ -48,8 +48,8 @@ def plot_categorical_plot(df):
 def plot_statistical_plot(df):
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     if len(numeric_cols) < 2:
-       print("No enough numerical columns for relational plot")
-       return
+        print("No enough numerical columns for relational plot")
+        return
 
     fig, ax = plt.subplots(figsize=(8, 5))
     sns.histplot(df[numeric_cols[0]], kde=True, bins=20, color='skyblue')
@@ -89,8 +89,7 @@ def preprocessing(df):
         df = df.dropna()
     else:
         print("\n No missing values found")
-    print(df.corr(numeric_only=True))
-     
+    print(df.corr(numeric_only=True)) 
     return df
 
 
@@ -103,7 +102,7 @@ def writing(moments, col):
 
     skew = moments[2]
     kurt = moments[3]
-    if skew >2:
+    if skew > 2:
         skew_text = "highlt right skewed"
     elif skew < -2:
         skew_text = "highlt left skewed"
